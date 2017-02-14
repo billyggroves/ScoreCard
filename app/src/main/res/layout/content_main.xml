@@ -33,13 +33,14 @@
             style="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:text="Please tap on the orange button at the bottom of the screen to start a new game"
+            android:text="Please tap on the button to start a scorecard:"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:gravity="center"
             android:layout_weight="0.23"
-            android:paddingTop="@dimen/activity_vertical_margin" />
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </RelativeLayout>

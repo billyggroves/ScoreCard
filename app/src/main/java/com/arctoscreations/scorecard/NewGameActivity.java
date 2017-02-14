@@ -7,12 +7,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.arctoscreations.scorecard.data.Player;
+
+import io.realm.Realm;
 
 public class NewGameActivity extends AppCompatActivity {
     EditText etPlayer1, etPlayer2, etPlayer3, etPlayer4, etPlayer5, etPlayer6, etPlayer7,
              etPlayer8, etPlayer9, etPlayer10;
+    Button btnAddPlayers;
+    Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,9 @@ public class NewGameActivity extends AppCompatActivity {
         etPlayer8 = (EditText) findViewById(R.id.etxtPlayer8);
         etPlayer9 = (EditText) findViewById(R.id.etxtPlayer9);
         etPlayer10 = (EditText) findViewById(R.id.etxtPlayer10);
+        btnAddPlayers = (Button) findViewById(R.id.btnAddPlayers);
+
+        btnAddPlayers.setEnabled(false);
 
         spNumPlayers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -51,6 +61,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.INVISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 1:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -63,6 +74,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.INVISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 2:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -75,6 +87,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.INVISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 3:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -87,6 +100,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.INVISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 4:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -99,6 +113,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.INVISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 5:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -111,6 +126,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.INVISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 6:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -123,6 +139,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.VISIBLE);
                         etPlayer9.setVisibility(View.INVISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 7:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -135,6 +152,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.VISIBLE);
                         etPlayer9.setVisibility(View.VISIBLE);
                         etPlayer10.setVisibility(View.INVISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                     case 8:
                         etPlayer1.setVisibility(View.VISIBLE);
@@ -147,6 +165,7 @@ public class NewGameActivity extends AppCompatActivity {
                         etPlayer8.setVisibility(View.VISIBLE);
                         etPlayer9.setVisibility(View.VISIBLE);
                         etPlayer10.setVisibility(View.VISIBLE);
+                        btnAddPlayers.setEnabled(true);
                         break;
                 }
             }
@@ -154,6 +173,19 @@ public class NewGameActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 return;
+            }
+        });
+
+        btnAddPlayers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Player player = realm.createObject(Player.class);
+                        player.setName("John");
+                    }
+                });
             }
         });
     }
