@@ -11,4 +11,47 @@
     tools:context="com.arctoscreations.scorecard.NewGameActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/txtvEnterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Enter your name:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/etxtFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvEnterName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="First Name" />
+
+    <EditText
+        android:id="@+id/etxtLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Last Name"
+        android:layout_below="@+id/etxtFirstName"
+        android:layout_alignLeft="@+id/etxtFirstName"
+        android:layout_alignStart="@+id/etxtFirstName"
+        android:layout_marginTop="14dp" />
+
+    <Button
+        android:id="@+id/btnCreateCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etxtLastName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="Start Scorecard" />
 </RelativeLayout>

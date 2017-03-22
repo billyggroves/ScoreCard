@@ -4,16 +4,30 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
 import io.realm.Realm;
 
 public class NewGameActivity extends AppCompatActivity {
     Realm realm;
+    Button addUser;
+    EditText first;
+    EditText last;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
+
+        addUser = (Button) findViewById(R.id.btnCreateCard);
+        first = (EditText) findViewById(R.id.etxtFirstName);
+        last = (EditText) findViewById(R.id.etxtLastName);
+
+        String firstName = first.toString();
+        String lastName = last.toString();
+
+
     }
 
     @Override
