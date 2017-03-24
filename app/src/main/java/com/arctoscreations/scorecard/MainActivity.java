@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import io.realm.Realm;
-
 public class MainActivity extends AppCompatActivity {
 
     Button btnStart;
@@ -30,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Realm.init(this);
     }
 
     @Override

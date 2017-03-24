@@ -2,10 +2,14 @@ package com.arctoscreations.scorecard;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.arctoscreations.scorecard.data.Player;
 
 import io.realm.Realm;
 
@@ -24,9 +28,28 @@ public class NewGameActivity extends AppCompatActivity {
         first = (EditText) findViewById(R.id.etxtFirstName);
         last = (EditText) findViewById(R.id.etxtLastName);
 
-        String firstName = first.toString();
-        String lastName = last.toString();
+        addUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Logs to check the Edit text works
+                Log.v("EditText value=", first.getText().toString() + " " + last.getText().toString());
 
+                // Realm transaction for player 1
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Player player = realm.createObject(Player.class);
+                        player.setId(1);
+                        player.setFirstName(first.getText().toString());
+                        player.setLastName(last.getText().toString());
+                    }
+                });
+
+                // Intent to move on to the ScoreCard Activity
+
+
+            }
+        });
 
     }
 
