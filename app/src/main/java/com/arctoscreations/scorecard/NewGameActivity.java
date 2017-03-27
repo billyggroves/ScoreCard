@@ -8,16 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.arctoscreations.scorecard.data.Player;
-
+import com.arctoscreations.scorecard.data.Score;
 import io.realm.Realm;
 
 public class NewGameActivity extends AppCompatActivity {
-    Realm realm;
-    Button addUser;
-    EditText first;
-    EditText last;
+    private Realm realm;
+    private Button addUser;
+    private EditText first;
+    private EditText last;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,12 @@ public class NewGameActivity extends AppCompatActivity {
                         player.setId(1);
                         player.setFirstName(first.getText().toString());
                         player.setLastName(last.getText().toString());
+
+                        Score p1Score = realm.createObject(Score.class);
+                        p1Score.setId(1);
+                        p1Score.setValue(0);
+
+                        player.getValue().add(p1Score);
                     }
                 });
 
