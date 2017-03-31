@@ -9,8 +9,8 @@
     tools:context="com.arctoscreations.scorecard.ScoreCardActivity"
     tools:showIn="@layout/activity_score_card">
 
-    <ListView
-        android:id="@+id/lvPlayers"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvPlayers"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </FrameLayout>

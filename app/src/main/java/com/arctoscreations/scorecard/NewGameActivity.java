@@ -1,5 +1,6 @@
 package com.arctoscreations.scorecard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,8 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.arctoscreations.scorecard.data.Player;
 import com.arctoscreations.scorecard.data.Score;
+
 import io.realm.Realm;
 
 public class NewGameActivity extends AppCompatActivity {
@@ -27,6 +30,8 @@ public class NewGameActivity extends AppCompatActivity {
         first = (EditText) findViewById(R.id.etxtFirstName);
         last = (EditText) findViewById(R.id.etxtLastName);
 
+        realm = Realm.getDefaultInstance();
+
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,13 +42,11 @@ public class NewGameActivity extends AppCompatActivity {
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Player player = realm.createObject(Player.class);
-                        player.setId(1);
+                        Player player = realm.createObject(Player.class, 1);
                         player.setFirstName(first.getText().toString());
                         player.setLastName(last.getText().toString());
 
-                        Score p1Score = realm.createObject(Score.class);
-                        p1Score.setId(1);
+                        Score p1Score = realm.createObject(Score.class, 1);
                         p1Score.setValue(0);
 
                         player.getValue().add(p1Score);
@@ -51,11 +54,18 @@ public class NewGameActivity extends AppCompatActivity {
                 });
 
                 // Intent to move on to the ScoreCard Activity
-
+                Intent intent = new Intent(NewGameActivity.this, ScoreCardActivity.class);
+                startActivity(intent);
 
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        realm.close();
     }
 
     @Override
