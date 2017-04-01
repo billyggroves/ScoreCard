@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="53dp"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="Enter your name:"
+        android:text="Enter player's name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
         android:textSize="24sp"
         android:layout_alignParentTop="true"
