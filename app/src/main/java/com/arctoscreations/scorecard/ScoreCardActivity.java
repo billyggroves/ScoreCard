@@ -1,8 +1,8 @@
 package com.arctoscreations.scorecard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +40,9 @@ public class ScoreCardActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "add player", Snackbar.LENGTH_LONG).show();
+                // Intent to move on to the ScoreCard Activity
+                Intent intent = new Intent(ScoreCardActivity.this, NewGameActivity.class);
+                startActivity(intent);
             }
         });
     }

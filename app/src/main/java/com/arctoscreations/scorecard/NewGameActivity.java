@@ -42,11 +42,12 @@ public class NewGameActivity extends AppCompatActivity {
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Player player = realm.createObject(Player.class, 1);
+                        long obj = realm.where(Player.class).count();
+                        Player player = realm.createObject(Player.class, obj + 1);
                         player.setFirstName(first.getText().toString());
                         player.setLastName(last.getText().toString());
 
-                        Score p1Score = realm.createObject(Score.class, 1);
+                        Score p1Score = realm.createObject(Score.class);
                         p1Score.setValue(0);
 
                         player.getValue().add(p1Score);
