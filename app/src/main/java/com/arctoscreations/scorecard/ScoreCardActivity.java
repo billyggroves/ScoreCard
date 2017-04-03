@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.arctoscreations.scorecard.data.Player;
 
@@ -19,6 +20,7 @@ public class ScoreCardActivity extends AppCompatActivity {
     private Realm realm;
     private RecyclerView recyclerView;
     private RecyclerPlayersAdapter adapter;
+    private Button btnAddScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +31,7 @@ public class ScoreCardActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-        recyclerView = (RecyclerView) findViewById(R.id.rvPlayers);
-        RealmResults<Player> players = realm.where(Player.class).findAll();
-        adapter = new RecyclerPlayersAdapter(this, players, false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-
+        setUpAdapter();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddPlayer);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +42,24 @@ public class ScoreCardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnAddScores = (Button) findViewById(R.id.btnAddScores);
+        btnAddScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent to move on to the ScoreCard Activity
+                Intent intent = new Intent(ScoreCardActivity.this, AddScoreActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setUpAdapter() {
+        recyclerView = (RecyclerView) findViewById(R.id.rvPlayers);
+        RealmResults<Player> players = realm.where(Player.class).findAll();
+        adapter = new RecyclerPlayersAdapter(this, players, false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

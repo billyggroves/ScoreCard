@@ -38,7 +38,7 @@ public class NewGameActivity extends AppCompatActivity {
                 // Logs to check the Edit text works
                 Log.v("EditText value=", first.getText().toString() + " " + last.getText().toString());
 
-                // Realm transaction for player 1
+                // Realm transaction for player
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {

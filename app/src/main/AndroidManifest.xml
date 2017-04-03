@@ -31,7 +31,8 @@
         <activity
             android:name=".ScoreCardActivity"
             android:label="@string/title_activity_score_card"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddScoreActivity"></activity>
     </application>
 
 </manifest>

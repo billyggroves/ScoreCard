@@ -6,20 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.arctoscreations.scorecard.ScoreCardActivity"
-    tools:showIn="@layout/activity_score_card">
+    tools:context="com.arctoscreations.scorecard.AddScoreActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvPlayers"
+        android:id="@+id/rvAddScore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnAddScores"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="Add Scores" />
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Done" />
 </LinearLayout>

@@ -9,13 +9,14 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Dummy Text"
-        android:textAlignment="viewStart"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvPlayerScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0" />
+        android:text="0"
+        android:textSize="30sp" />
 
 </LinearLayout>
