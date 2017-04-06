@@ -53,37 +53,40 @@ public class AddScoreRVAdapter extends RealmRecyclerViewAdapter<Player, AddScore
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "You added: " + etNewScore.getText() + " points to "
-                        + tvName.getText() + "'s score!", Toast.LENGTH_SHORT).show();
+                if (etNewScore.getText().toString() == null){
+                    Toast.makeText(v.getContext(), "Please enter a value!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(v.getContext(), "You added: " + etNewScore.getText() + " points to "
+                            + tvName.getText() + "'s score!", Toast.LENGTH_SHORT).show();
 
-                // Realm transaction for player
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        //Converts edittext text to int
-                        int newPoints = Integer.parseInt(etNewScore.getText().toString());
-                        //Converts textview score to int
-                        int oldPoints = Integer.parseInt(tvScore.getText().toString());
+                    // Realm transaction for player
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            //Converts edittext text to int
+                            int newPoints = Integer.parseInt(etNewScore.getText().toString());
+                            //Converts textview score to int
+                            int oldPoints = Integer.parseInt(tvScore.getText().toString());
 
-                        //New score object
-                        Score score = new Score();
-                        //Adds new points added to the player's current points
-                        score.setValue(newPoints + oldPoints);
+                            //New score object
+                            Score score = new Score();
+                            //Adds new points added to the player's current points
+                            score.setValue(newPoints + oldPoints);
 
-                        //Finds Player at the position
-                        Player player = realm.where(Player.class).equalTo("id", getAdapterPosition() + 1).findFirst();
-                        //Adds new score object to player's score RealmList
-                        player.getValue().add(score);
+                            //Finds Player at the position
+                            Player player = realm.where(Player.class).equalTo("id", getAdapterPosition() + 1).findFirst();
+                            //Adds new score object to player's score RealmList
+                            player.getValue().add(score);
 
-                        tvScore.setText(player.getValue().max("value").toString());
-                    }
-                });
+                            tvScore.setText(player.getValue().max("value").toString());
+                        }
+                    });
 
-                clear(v);
-                space.setVisibility(space.GONE);
-                etNewScore.setVisibility(etNewScore.GONE);
-                btnAddScore.setVisibility(btnAddScore.GONE);
-
+                    clear(v);
+                    space.setVisibility(space.GONE);
+                    etNewScore.setVisibility(etNewScore.GONE);
+                    btnAddScore.setVisibility(btnAddScore.GONE);
+                }
             }
 
             public void clear(View v) {
