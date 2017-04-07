@@ -48,7 +48,7 @@ public class RecyclerPlayersAdapter extends RealmRecyclerViewAdapter<Player, Rec
         Player obj = getItem(position);
 
         holder.tvName.setText(obj.getFirstName() + " " + obj.getLastName());
-        holder.tvScore.setText(obj.getValue().max("value").toString());
+        holder.tvScore.setText(String.valueOf(obj.getValue().last().getValue()));
     }
 
 }
