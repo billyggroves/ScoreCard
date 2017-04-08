@@ -47,7 +47,7 @@ public class RecyclerPlayersAdapter extends RealmRecyclerViewAdapter<Player, Rec
     public void onBindViewHolder(final MyViewHolder holder, final int position){
         Player obj = getItem(position);
 
-        holder.tvName.setText(obj.getFirstName() + " " + obj.getLastName());
+        holder.tvName.setText(obj.getName());
         holder.tvScore.setText(String.valueOf(obj.getValue().last().getValue()));
     }
 

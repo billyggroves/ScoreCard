@@ -19,7 +19,6 @@ public class NewGameActivity extends AppCompatActivity {
     private Realm realm;
     private Button addUser;
     private EditText first;
-    private EditText last;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,6 @@ public class NewGameActivity extends AppCompatActivity {
 
         addUser = (Button) findViewById(R.id.btnCreateCard);
         first = (EditText) findViewById(R.id.etxtFirstName);
-        last = (EditText) findViewById(R.id.etxtLastName);
 
         realm = Realm.getDefaultInstance();
 
@@ -36,7 +34,7 @@ public class NewGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Logs to check the Edit text works
-                Log.v("EditText value=", first.getText().toString() + " " + last.getText().toString());
+                Log.v("EditText value=", first.getText().toString());
 
                 // Realm transaction for player
                 realm.executeTransaction(new Realm.Transaction() {
@@ -44,8 +42,7 @@ public class NewGameActivity extends AppCompatActivity {
                     public void execute(Realm realm) {
                         long obj = realm.where(Player.class).count();
                         Player player = realm.createObject(Player.class, obj + 1);
-                        player.setFirstName(first.getText().toString());
-                        player.setLastName(last.getText().toString());
+                        player.setName(first.getText().toString());
 
                         Score p1Score = realm.createObject(Score.class);
                         p1Score.setValue(0);
