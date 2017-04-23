@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scorecard</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_score_card">ScoreCardActivity</string>
+    <string name="app_name">ScoreCard</string>
+    <string name="action_new_game">New Game</string>
+    <string name="title_activity_score_card">Scorecard</string>
 </resources>
